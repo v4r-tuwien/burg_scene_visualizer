@@ -1,0 +1,22 @@
+
+<launch>
+    <arg name="scene_fn" default="/home/catkin_ws/src/burg_scene_visualizer/examples/scenes/scene02.yaml" doc="Path to the Scene.yaml file"/>
+    <arg name="vis" default="true" doc="Launch RViZ"/>
+    <arg name="fps_limit" default="15" doc="frame rate limit (to save computation power)"/>
+    <arg name="camera" default="realsense" doc="camera to use [kinect2, realsense]"/>
+ 
+    <!-- start up scene visualizer -->
+    <node pkg="burg_scene_visualizer" type="visualize_scene.py" name="visualize_scene" output="screen">
+        <!-- kinect2 settings - is the camera frame correct? -->
+        <remap from="~input/image" to="/hsrb/head_rgbd_sensor/rgb/image_raw" />
+        <remap from="~input/camera_info" to="/hsrb/head_rgbd_sensor/rgb/camera_info"  />
+        <param name="camera_frame" value="head_rgbd_sensor_rgb_frame" />
+
+        <param name="scene_fn" value="$(arg scene_fn)" />
+    </node>
+
+    <!-- show all output data in rviz -->
+    <node pkg="rviz" type="rviz" respawn="false" name="rviz"
+          args="-d $(find burg_scene_visualizer)/rviz/visualizer-config.rviz" if="$(arg vis)"/>
+
+</launch>
