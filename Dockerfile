@@ -18,11 +18,7 @@ RUN git clone https://github.com/mrudorfer/burg-toolkit.git \
 WORKDIR /home/catkin_ws/src/burg-toolkit
 RUN python3 -m pip install --upgrade pip
 RUN pip3 install --upgrade setuptools wheel
-#RUN pip3 install -e .
 RUN pip3 install .
-
-COPY examples .
-COPY hsrb_visualize.launch /home/catkin_ws/src/burg_scene_visualizer/launch/
 
 WORKDIR /home/catkin_ws/
 RUN . /opt/ros/noetic/setup.bash && catkin build

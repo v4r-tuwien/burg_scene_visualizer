@@ -16,6 +16,6 @@ services:
       DISPLAY: $DISPLAY
       QT_X11_NO_MITSHM: 1
     entrypoint: ""
-    command: bash -c "source /home/catkin_ws/devel/setup.bash roslaunch burg_scene_visualizer hsrb_visualize.launch scene_fn:=/home/catkin_ws/src/burg_scene_visualizer/examples/scenes/scene02.yaml"
+    command: bash -c "source /home/catkin_ws/devel/setup.bash && roslaunch burg_scene_visualizer hsrb_visualize.launch scene_fn:=/home/catkin_ws/src/burg_scene_visualizer/examples/scenes/scene02.yaml"
     stdin_open: true
     tty: true
