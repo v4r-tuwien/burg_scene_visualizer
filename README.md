@@ -13,6 +13,18 @@ that ROS uses. This is usually the system python.
 Then you can simply clone this repository into your `catkin_ws/src` and install 
 using `catkin_make`.
 
+#### docker image
+
+A docker image that installs the [BURG-Toolkit](https://github.com/mrudorfer/burg-toolkit) and the Scene Visualizer is also available. 
+The `docker-compose.yml` should make it quite easy to build and start the container. 
+Since the Visualizer needs RVIZ, you have to authorize the container to access the xserver using the `xhost` command. 
+With the following two commands, you can start the Visualizer:
+```
+xhost +local:'hostname'
+docker-compose up
+```
+
+
 ### usage
 
 The package contains:
